@@ -21,6 +21,9 @@ au(KDDI)独自の ISO-2022-JP には存在しているようだ。Ruby のISO-20
 
 エンコーディングは Shift_JIS。
 
+SBMも同じエンコーディングを使用しているので、このメールを使えばSBMのケー
+スもテストできる。
+
 ## emobile-utf-8-extra-base64.eml
 
 丸付き数字の1が入ったメール。
