@@ -35,3 +35,13 @@ EM絵文字の入ったメール。
   * [技術情報 | イー・モバイル](http://developer.emnet.ne.jp/browser.html)
   * emoji_list.pdf の 269番の絵文字を使用 
 
+## softbank.eml
+
+トランペットの絵文字の入ったメール。
+
+エンコーディングはShift_JIS。
+
+参考:
+
+  * [ソフトバンク絵文字コードの種類と一覧](http://code.cside.com/softbank/)
+  * 上記一覧の 0xE042 を使用。
