@@ -1,10 +1,10 @@
 # 絵文字メール
 
-キャリア独自の絵文字を含むメール。
+絵文字を含むメール。
 
 ## docomo.eml
 
-iアプリ絵文字が入ったメール。
+ドコモ独自のiアプリ絵文字が入ったメール。
 
 エンコーディングはShift_JIS。
 
@@ -15,7 +15,7 @@ iアプリ絵文字が入ったメール。
 
 ## au.eml
 
-Ez絵文字が入ったメール。
+au独自のEz絵文字が入ったメール。
 
 エンコーディングはISO-2022-JP。
 
@@ -26,7 +26,7 @@ Ez絵文字が入ったメール。
 
 ## emobile.eml
 
-EM絵文字の入ったメール。
+イー・モバイル独自のEM絵文字の入ったメール。
 
 エンコーディングはUTF-8。
 
@@ -37,7 +37,7 @@ EM絵文字の入ったメール。
 
 ## softbank.eml
 
-トランペットの絵文字の入ったメール。
+SoftBank Mobile独自のトランペットの絵文字の入ったメール。
 
 エンコーディングはShift_JIS。
 
@@ -45,3 +45,20 @@ EM絵文字の入ったメール。
 
   * [ソフトバンク絵文字コードの種類と一覧](http://code.cside.com/softbank/)
   * 上記一覧の 0xE042 を使用。
+
+## unicode.eml
+
+Unicode6.0から追加された絵文字 U+1F620 ANGRY FACE を含むメール。
+
+参考:
+
+  * [Unicode 6.0.0](http://www.unicode.org/versions/Unicode6.0.0/)
+
+> 15: New text on Emoji affecting the description of the following code ranges:
+>     1F600-1F64F Emoticons
+
+Unicode 6.0で絵文字が追加された。このテストメールでは「Emoticon(絵文字)」
+という分類に含まれている U+1F620 ANGRY FACE を使用した。
+
+Unicode 6.0で追加された絵文字の詳細は
+[15章](http://www.unicode.org/versions/Unicode6.0.0/ch15.pdf)を参照。
