@@ -92,15 +92,15 @@ FIXME: この説明だと非プログラマーにはまだわかりづらいか�
 (3) フォークしたリポジトリを git clone します。
 
 ```
-  $ git clone git@github.com:<アカウント名>/test-mails.git
+$ git clone git@github.com:<アカウント名>/test-mails.git
 ```
 
 (4) Git の設定をします。
 
 ```
-  $ cd test-mails
-  $ git config --add user.name "Your name"
-  $ git config --add user.email "yourname@example.com"
+$ cd test-mails
+$ git config --add user.name "Your name"
+$ git config --add user.email "yourname@example.com"
 ```
 
 ここで設定した名前とメールアドレスは、コミットログに残るので公開して差し支えないものを指定してください。
@@ -110,15 +110,15 @@ FIXME: この説明だと非プログラマーにはまだわかりづらいか�
 test-mails プロジェクトでの変更に追従するための設定をしておきます。
 
 ```
-  $ git remote add upstream https://github.com/milter-manager/test-mails.git
+$ git remote add upstream https://github.com/milter-manager/test-mails.git
 ```
 
 test-mails プロジェクトでの変更に追従する場合は、以下のコマンドを実行します。
 
 ```
-  $ git fetch --all
-  $ git checkout master
-  $ git rebase upstream/master
+$ git fetch --all
+$ git checkout master
+$ git rebase upstream/master
 ```
 
 (6) 新しいテストメールを追加します。
@@ -126,30 +126,30 @@ test-mails プロジェクトでの変更に追従する場合は、以下のコ
 まず、新しいブランチを作成します。追加するメールの内容がわかるような名前にしておくとあとで少しだけ便利です。
 
 ```
-  $ git checkout -b add-xxx upstream/master
+$ git checkout -b add-xxx upstream/master
 ```
 
 メールを追加してコミットする。たくさんある場合はディレクトリを作成してその中にメールを入れていただけると、作業しやすいです。
 
 ```
-  $ mkdir -p draft/subject
-  $ cp /path/to/your/mails/*.eml draft/subject/
-  $ git add draft/subject/*.eml
+$ mkdir -p draft/subject
+$ cp /path/to/your/mails/*.eml draft/subject/
+$ git add draft/subject/*.eml
 ```
 
 markdown 記法で説明を書きます。説明を書いていただければ、分類作業時の参考になります。
 なお、取り込み時に修正するので記法は markdown 記法でなくても構いません。
 
 ```
-  $ vi draft/subject/README.md
-  $ git add draft/subject/README.md
-  $ git commit -m "Add README.md"
+$ vi draft/subject/README.md
+$ git add draft/subject/README.md
+$ git commit -m "Add README.md"
 ```
 
 変更を `git push` する。
 
 ```
-  $ git push -u origin add-xxx
+$ git push -u origin add-xxx
 ```
 
 (7) Pull Request をします。
