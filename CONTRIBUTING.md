@@ -83,9 +83,84 @@ GitHubのアカウントを持っている場合はdraft/ディレクトリに�
 態で送って大丈夫です。テストメールの説明などを参考にtest-mailsプロジェ
 クトが分類します。
 
-TODO: GitHubでforkしてpull requestするまでの方法を丁寧に説明したページ
-にリンクを貼るか、ここにプログラマーではなく、システム管理者でもわかる
-ような丁寧な説明を追加する。
+FIXME: この説明だと非プログラマーにはまだわかりづらいかも。
+
+(1) https://github.com/milter-manager/test-mails をウェブブラウザで開きます。
+
+(2) 右上に「Fork」ボタンがあるのでクリックして自分のアカウントに test-mails プロジェクトのリポジトリをフォークします。
+
+(3) フォークしたリポジトリを git clone します。
+
+````
+  $ git clone git@github.com:<アカウント名>/test-mails.git
+````
+
+(4) Git の設定をします。
+
+````
+  $ cd test-mails
+  $ git config --add user.name "Your name"
+  $ git config --add user.email "yourname@example.com"
+````
+
+ここで設定した名前とメールアドレスは、コミットログに残るので公開して差し支えないものを指定してください。
+
+(5) upstream を設定します。
+
+test-mails プロジェクトでの変更に追従するための設定をしておきます。
+
+````
+  $ git remote add upstream https://github.com/milter-manager/test-mails.git
+````
+
+test-mails プロジェクトでの変更に追従する場合は、以下のコマンドを実行します。
+
+````
+  $ git fetch --all
+  $ git checkout master
+  $ git rebase upstream/master
+````
+
+(6) 新しいテストメールを追加します。
+
+まず、新しいブランチを作成します。追加するメールの内容がわかるような名前にしておくとあとで少しだけ便利です。
+
+````
+  $ git checkout -b add-xxx upstream/master
+````
+
+メールを追加してコミットする。たくさんある場合はディレクトリを作成してその中にメールを入れていただけると、作業しやすいです。
+
+````
+  $ mkdir -p draft/subject
+  $ cp /path/to/your/mails/*.eml draft/subject/
+  $ git add draft/subject/*.eml
+````
+
+markdown 記法で説明を書きます。説明を書いていただければ、分類作業時の参考になります。
+なお、取り込み時に修正するので記法は markdown 記法でなくても構いません。
+
+````
+  $ vi draft/subject/README.md
+  $ git add draft/subject/README.md
+  $ git commit -m "Add README.md"
+````
+
+変更を `git push` する。
+
+````
+  $ git push -u origin add-xxx
+````
+
+(7) Pull Request をします。
+
+https://github.com/<アカウント名/test-mails をウェブブラウザで開きます。
+
+そうすると「(6)で作成したブランチに対応する Pull Request を送るためのボタン」が追加されているのでそれをクリックします。
+
+メッセージ等は、編集せずにそのまま Submit してもらって大丈夫です。(6)でREADME.md を作成しなかった場合は、ここで説明を書いていただけると、分類作業時の参考になります。
+
+Pull Request が登録されたら、関係者に通知が飛ぶのでしばらく待てば、送信された Pull Request は取り込まれます。
 
 ### milter managerのメーリングリストに参加している場合
 
