@@ -20,7 +20,9 @@ Subject ヘッダーの値がアルファベットのみであるメール。
 
 ## base64-iso-2022-jp.eml
 
-Subject ヘッダーの値が ISO-2022-JP で Base64 エンコードされているメール。
+Subject ヘッダーの値が ASCII 以外の文字なので、 [RFC 2047][] に従ってフォーマットしているメール。
+
+「charset」は「ISO-2022-JP」で、「encoding」は「B」を使っている。
 
 「テスト」と書かれている。
 
@@ -71,7 +73,9 @@ Subject ヘッダーの値がアルファベットのみで2行になってい�
 
 ## folded-base64-iso-2022-jp.eml
 
-Subject ヘッダーの値が2行になっており ISO-2022-JP で Base64 エンコードされているメール。
+Subject ヘッダーの値が2行になっているメール。ヘッダーの値が ASCII 以外の文字なので、 [RFC 2047][] に従ってフォーマットしている。
+
+「charset」は「ISO-2022-JP」で、「encoding」は「B」を使っている。
 
 内容は「テストテスト」
 
@@ -108,10 +112,15 @@ Subject ヘッダーの値が2行になっており、1行目は99桁で折り�
 
 ## folded-mime-incomplete.eml
 
-Subject ヘッダーの値が ISO-2022-JP で Base64 で MIME エンコードされているが、一つの MIME エンコードされたブロックが2行に分かれているメール。
+Subject ヘッダーの値が ASCII 以外の文字なので、 [RFC 2047][] に従ってフォーマットしているメール。
 
-1行目のMIMEエンコードにJISのkanji-inコード「^$B」が、2行目のMIMEエンコードにJISのkanji-outコード「^(B」が書かれている
-（1行でkanji-in/kanji-outが完結していない）
+「charset」は「ISO-2022-JP」で、「encoding」は「B」を使っている。ただし、 Base64 エンコードされたブロックが2行に分かれている。
+
+1行目のBase64エンコードされたブロックにISO-2022-JPのdouble-byte-seq「^$B」があり、2行目のBase64エンコードされたブロックにISO-2022-JPのsingle-byte-seq「^(B」がある。
+
+（1行でdouble-byte-segmentが完結していなくて、2行目もdouble-byte-segmentが継続している。）
+
+参照: [RFC 1468][] （ISO-2022-JPのRFC）
 
 ## 2-subjects.eml
 
@@ -130,3 +139,6 @@ Subject ヘッダーの値が NULL 文字のみであるメール。
 Subject ヘッダーの値が NULL 文字を含むメール。
 
 内容は「te\0st」
+
+  [RFC 1468]: http://tools.ietf.org/html/rfc1468
+  [RFC 2047]: http://tools.ietf.org/html/rfc2047
